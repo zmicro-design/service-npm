@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  npm:
+    restart: always
+    image: whatwewant/verdaccio:${SERVICE_NPM_VERSION}
+    user: "${SERVICE_NPM_UID}:${SERVICE_NPM_GID}"
+    ports:
+     - ${SERVICE_NPM_HOST}:${SERVICE_NPM_PORT}:4873
+    # environment:
+    #   # VERDACCIO_PORT: 8080
+    #   NPM_ALY_OSS_BUCKET: ${SERVICE_NPM_ALY_OSS_BUCKET}
+    #   NPM_ALY_OSS_ACCESS_KEY: ${SERVICE_NPM_ALY_OSS_ACCESS_KEY}
+    #   NPM_ALY_OSS_ACCESS_SECRET: ${SERVICE_NPM_ALY_OSS_ACCESS_SECRET}
+    #   # NPM_ADMIN_USERNAME: ${SERVICE_NPM_ADMIN_USERNAME}
+    #   # NPM_ADMIN_PASSWORD: ${SERVICE_NPM_ADMIN_PASSWORD}
+    volumes:
+      - ${SERVICE_CONFIGS}:/verdaccio/conf
+      - ${SERVICE_CONFIGS}/plugins:/verdaccio/plugins
+      - ${SERVICE_DATA}/storage:/verdaccio/storage
+
+networks:
+  default:
+    external: true
+    name: compose-ingress
