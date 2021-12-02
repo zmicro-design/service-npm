@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  npm:
+  npm-registry:
     restart: always
     image: whatwewant/verdaccio:${SERVICE_NPM_VERSION}
     user: "${SERVICE_NPM_UID}:${SERVICE_NPM_GID}"

@@ -1,4 +1,4 @@
-export SERVICE_NPM_NAME=npm
+export SERVICE_NPM_NAME=npm-registry
 
 export SERVICE_NPM_VERSION=v0.0.5
 export SERVICE_NPM_CONFIG=$SERVICE_CONFIG
