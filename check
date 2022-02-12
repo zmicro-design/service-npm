@@ -20,9 +20,9 @@ check() {
     config::set SERVICE_NPM_ALY_OSS_ACCESS_KEY $value $SERVICE_NPM_CONFIG
   fi
 
-  if [ -z "$SERVICE_NPM_ALY_OSS_ACCESS_SECRET" ]; then
-    inquirer::text "请输入 SERVICE_NPM_ALY_OSS_ACCESS_SECRET:" value
-    config::set SERVICE_NPM_ALY_OSS_ACCESS_SECRET $value $SERVICE_NPM_CONFIG
+  if [ -z "$SERVICE_NPM_REGISTRY_ALY_OSS_ACCESS_SECRET" ]; then
+    inquirer::text "请输入 SERVICE_NPM_REGISTRY_ALY_OSS_ACCESS_SECRET:" value
+    config::set SERVICE_NPM_REGISTRY_ALY_OSS_ACCESS_SECRET $value $SERVICE_NPM_CONFIG
   fi
 
   if [ -z "$SERVICE_NPM_ALY_OSS_BUCKET" ]; then
