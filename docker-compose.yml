@@ -17,6 +17,8 @@ services:
       # VERDACCIO_PORT: 4873
       DOREAMON_CLIENT_ID: ${SERVICE_NPM_DOREAMON_CLIENT_ID}
       DOREAMON_CLIENT_SECRET: ${SERVICE_NPM_DOREAMON_CLIENT_SECRET}
+      #
+      ROOT_URL: ${SERVICE_NPM_ROOT_URL}
     volumes:
       - ${SERVICE_CONFIGS}:/verdaccio/conf
       - ${SERVICE_DATA}/plugins:/verdaccio/plugins
