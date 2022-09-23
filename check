@@ -4,7 +4,7 @@ load inquirer
 
 check() {
   if [ ! -f $SERVICE_CONFIG ]; then
-     touch $SERVICE_CONFIG
+    touch $SERVICE_CONFIG
   fi
 
   config::load_file $SERVICE_NPM_CONFIG
@@ -33,7 +33,7 @@ check() {
     inquirer::text "请输入 SERVICE_NPM_ALY_OSS_BUCKET:" value
     config::set SERVICE_NPM_ALY_OSS_BUCKET $value $SERVICE_NPM_CONFIG
   fi
-  
+
   if [ -z "$SERVICE_NPM_ALY_OSS_REGION" ]; then
     inquirer::text "请输入 SERVICE_NPM_ALY_OSS_REGION:" value
     config::set SERVICE_NPM_ALY_OSS_REGION $value $SERVICE_NPM_CONFIG
@@ -68,6 +68,11 @@ check() {
         config::set SERVICE_NPM_DOREAMON_CLIENT_SECRET $value $SERVICE_NPM_CONFIG
       fi
     fi
+  fi
+
+  if [ -z "$SERVICE_NPM_ROOT_URL" ]; then
+    inquirer::text "请输入 SERVICE_NPM_ROOT_URL:" value
+    config::set SERVICE_NPM_ROOT_URL $value $SERVICE_NPM_CONFIG
   fi
 
   # @TODO load again

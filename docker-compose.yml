@@ -1,12 +1,12 @@
 version: '3.7'
 
 services:
-  npm-registry:
+  npm:
     restart: always
     image: whatwewant/verdaccio:${SERVICE_NPM_VERSION}
     user: root # "${SERVICE_NPM_UID}:${SERVICE_NPM_GID}"
     ports:
-     - ${SERVICE_NPM_HOST}:${SERVICE_NPM_PORT}:4873
+      - ${SERVICE_NPM_HOST}:${SERVICE_NPM_PORT}:4873
     environment:
       OSS_ACCESS_KEY: ${SERVICE_NPM_ALY_OSS_ACCESS_KEY} #Required
       OSS_ACCESS_SECRET: ${SERVICE_NPM_ALY_OSS_ACCESS_SECRET} #Required
