@@ -8,6 +8,8 @@ services:
     ports:
       - ${SERVICE_NPM_HOST}:${SERVICE_NPM_PORT}:4873
     environment:
+      SECRET_TOKEN: ${SERVICE_NPM_SECRET_TOKEN}
+      #
       OSS_ACCESS_KEY: ${SERVICE_NPM_ALY_OSS_ACCESS_KEY} #Required
       OSS_ACCESS_SECRET: ${SERVICE_NPM_ALY_OSS_ACCESS_SECRET} #Required
       OSS_BUCKET: ${SERVICE_NPM_ALY_OSS_BUCKET} #Required

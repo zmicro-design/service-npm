@@ -1,7 +1,5 @@
 #!/bin/bash
 
-load inquirer
-
 check() {
   if [ ! -f $SERVICE_CONFIG ]; then
     touch $SERVICE_CONFIG
@@ -70,6 +68,11 @@ check() {
     fi
   fi
 
+  if [ -z "$SERVICE_NPM_SECRET_TOKEN" ]; then
+    inquirer::text "请输入 SERVICE_NPM_SECRET_TOKEN:" value $(os::uuid)
+    config::set SERVICE_NPM_SECRET_TOKEN $value $SERVICE_NPM_CONFIG
+  fi
+
   if [ -z "$SERVICE_NPM_ROOT_URL" ]; then
     inquirer::text "请输入 SERVICE_NPM_ROOT_URL:" value
     config::set SERVICE_NPM_ROOT_URL $value $SERVICE_NPM_CONFIG
@@ -95,7 +98,9 @@ check() {
   export SERVICE_NPM_ADMIN_USERNAME=$SERVICE_NPM_ADMIN_USERNAME
   export SERVICE_NPM_ADMIN_PASSWORD=$SERVICE_NPM_ADMIN_PASSWORD
   #
+  export SERVICE_NPM_SECRET_TOKEN=$SERVICE_NPM_SECRET_TOKEN
   export SERVICE_NPM_ROOT_URL=$SERVICE_NPM_ROOT_URL
+  export SERVICE_NPM_SCOPE=$SERVICE_NPM_SCOPE
 }
 
 check $@
