@@ -7,6 +7,31 @@ check() {
 
   config::load_file $SERVICE_NPM_CONFIG
 
+  if [ -z "$SERVICE_NPM_COMPANY" ]; then
+    inquirer::text "请输入 SERVICE_NPM_COMPANY (company name):" value
+    config::set SERVICE_NPM_COMPANY $value $SERVICE_NPM_CONFIG
+  fi
+
+  if [ -z "$SERVICE_NPM_ROOT_URL" ]; then
+    inquirer::text "请输入 SERVICE_NPM_ROOT_URL:" value
+    config::set SERVICE_NPM_ROOT_URL $value $SERVICE_NPM_CONFIG
+  fi
+
+  if [ -z "$SERVICE_NPM_SCOPE" ]; then
+    inquirer::text "请输入 SERVICE_NPM_SCOPE (used for npm scope，such as：zmicro):" value
+    config::set SERVICE_NPM_SCOPE $value $SERVICE_NPM_CONFIG
+  fi
+
+  if [ -z "$SERVICE_NPM_SECRET_TOKEN" ]; then
+    inquirer::text "请输入 SERVICE_NPM_SECRET_TOKEN:" value $(os::uuid)
+    config::set SERVICE_NPM_SECRET_TOKEN $value $SERVICE_NPM_CONFIG
+  fi
+
+  if [ -z "$UPSTREAM_NPM_REGISTRY" ]; then
+    inquirer::text "请输入 UPSTREAM_NPM_REGISTRY:" value "registry.npmjs.org"
+    config::set UPSTREAM_NPM_REGISTRY $value $SERVICE_NPM_CONFIG
+  fi
+
   if [ -z "$SERVICE_NPM_HOST" ]; then
     inquirer::text "请输入 SERVICE_NPM_HOST:" value
     config::set SERVICE_NPM_HOST $value $SERVICE_NPM_CONFIG
@@ -66,21 +91,6 @@ check() {
         config::set SERVICE_NPM_DOREAMON_CLIENT_SECRET $value $SERVICE_NPM_CONFIG
       fi
     fi
-  fi
-
-  if [ -z "$SERVICE_NPM_SECRET_TOKEN" ]; then
-    inquirer::text "请输入 SERVICE_NPM_SECRET_TOKEN:" value $(os::uuid)
-    config::set SERVICE_NPM_SECRET_TOKEN $value $SERVICE_NPM_CONFIG
-  fi
-
-  if [ -z "$SERVICE_NPM_ROOT_URL" ]; then
-    inquirer::text "请输入 SERVICE_NPM_ROOT_URL:" value
-    config::set SERVICE_NPM_ROOT_URL $value $SERVICE_NPM_CONFIG
-  fi
-
-  if [ -z "$SERVICE_NPM_SCOPE" ]; then
-    inquirer::text "请输入 SERVICE_NPM_SCOPE (用于 npm scope，例如：zmicro):" value
-    config::set SERVICE_NPM_SCOPE $value $SERVICE_NPM_CONFIG
   fi
 
   # @TODO load again
