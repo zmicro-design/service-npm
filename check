@@ -76,7 +76,7 @@ check() {
   fi
 
   if [ -z "$SERVICE_NPM_SCOPE" ]; then
-    inquirer::text "请输入 SERVICE_NPM_SCOPE (用于 @scope):" value
+    inquirer::text "请输入 SERVICE_NPM_SCOPE (用于 npm scope，例如：zmicro):" value
     config::set SERVICE_NPM_SCOPE $value $SERVICE_NPM_CONFIG
   fi
 
