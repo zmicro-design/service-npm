@@ -1,3 +1,3 @@
 NAME=npm-registry
-VERSION=v1.0.10
+VERSION=v1.1.0
 DESCRIPTION="NPM Registry Service (Verdiccio)"
