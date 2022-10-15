@@ -27,9 +27,9 @@ check() {
     config::set SERVICE_NPM_SECRET_TOKEN $value $SERVICE_NPM_CONFIG
   fi
 
-  if [ -z "$UPSTREAM_NPM_REGISTRY" ]; then
-    inquirer::text "请输入 UPSTREAM_NPM_REGISTRY:" value "registry.npmjs.org"
-    config::set UPSTREAM_NPM_REGISTRY $value $SERVICE_NPM_CONFIG
+  if [ -z "$SERVICE_NPM_UPSTREAM_NPM_REGISTRY" ]; then
+    inquirer::text "请输入 SERVICE_NPM_UPSTREAM_NPM_REGISTRY:" value "registry.npmjs.org"
+    config::set SERVICE_NPM_UPSTREAM_NPM_REGISTRY $value $SERVICE_NPM_CONFIG
   fi
 
   if [ -z "$SERVICE_NPM_HOST" ]; then
