@@ -1,1 +1,4 @@
 data/
+tmp/
+.env-e
+mod-e
